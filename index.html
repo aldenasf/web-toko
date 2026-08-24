@@ -1,11 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    
+
+<body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm sticky top-0 z-50 flex flex-row p-4 ">
+        <div class="flex items-center">
+            <a href="/" class="text-xl font-bold">TokoKita</a>
+        </div>
+        <nav class="ml-auto">
+            <ul class="flex flex-row gap-4 list-none">
+                <li>
+                    <a href="index.html#home">Home</a>
+                </li>
+                <li>
+                    <a href="index.html#produk">Produk</a>
+                </li>
+                <li>
+                    <a class="bg-sky-400 text-white px-4 py-2 rounded-lg" href="login.html">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="py-16 px-4 text-center gap-4 flex flex-col items-center bg-blue-600">
+            <h1 class="text-white text-4xl">TokoKita</h1>
+            <p class="text-white text-wrap max-w-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+                facere distinctio eum voluptates ab nulla
+                in odit quis rem culpa tempora, ducimus doloribus, quam, dolores quibusdam sit nam est delectus.</p>
+            <a href="#produk"
+                class="bg-blue-300 hover:bg-sky-400 transition-colors duration-100 px-4 py-2 rounded-lg">Jelajahi
+                Produk</a>
+        </section>
+
+        <section id="produk" class="flex flex-col items-center gap-4 mt-8">
+            <h2 class="text-2xl font-bold">Produk Unggulan</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://images.unsplash.com/photo-1630543378528-10043e324452?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-gray-200 border rounded-4xl max-w-fit">Kategori: Minuman</span>
+                    <h3 class="text-lg font-bold">Tea</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 150.000</span>
+                    <button
+                        class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 transition-colors duration-100">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://images.unsplash.com/photo-1656504877313-9bd5542b9d6b?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-gray-200 border rounded-4xl max-w-fit">Kategori: Minuman</span>
+                    <h3 class="text-lg font-bold">Milk Tea</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 150.000</span>
+                    <button
+                        class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 transition-colors duration-100">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://images.unsplash.com/photo-1587080413959-06b859fb107d?q=80&w=892&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-gray-200 border rounded-4xl max-w-fit">Kategori: Minuman</span>
+                    <h3 class="text-lg font-bold">Cappucino</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 150.000</span>
+                    <button
+                        class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 transition-colors duration-100">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://images.unsplash.com/photo-1588012841523-08163e2b0c26?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-gray-200 border rounded-4xl max-w-fit">Kategori: Minuman</span>
+                    <h3 class="text-lg font-bold">Americano</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 150.000</span>
+                    <button
+                        class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 transition-colors duration-100">Beli</button>
+                </article>
+
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Uranium-235.svg" alt=""
+                        class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-amber-500 border rounded-4xl max-w-fit">Kategori:
+                        Bahan Radioaktif</span>
+                    <h3 class="text-lg font-bold">Uranium-235</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 999.999.999.000</span>
+                    <button class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 ">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://new.dawnscientific.com/public/storage/products/Ch8027-hydrofluoric-acid-lab-500ml-203f05.webp"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-emerald-500 border rounded-4xl max-w-fit">Kategori:
+                        Bahan Korosif</span>
+                    <h3 class="text-lg font-bold">Hydrofluoric Acid</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 999.999.999.000</span>
+                    <button class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 ">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Nitroglycerin.svg/1920px-Nitroglycerin.svg.png"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-red-500 border rounded-4xl max-w-fit">Kategori:
+                        Bahan Peledak</span>
+                    <h3 class="text-lg font-bold">Nitroglycerin</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span>Rp. 999.999.999.000</span>
+                    <button class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 ">Beli</button>
+                </article>
+                <article
+                    class="bg-white border rounded-lg p-4 flex flex-col gap-2 max-w-64 hover:shadow-lg transition shadow-md ">
+                    <img src="https://assets.fishersci.com/TFS-Assets/CCG/Bel-Art-Products/product-images/21-2741357-03411700-STD-00.jpg-650.jpg"
+                        alt="" class="rounded-sm max-h-48 w-auto m-auto">
+                    <span class="px-3 py-0.5 text-sm bg-yellow-500 border rounded-4xl max-w-fit">Kategori:
+                        Bahan Biohazard</span>
+                    <h3 class="text-lg font-bold">Limbah Biohazard</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati fugiat cupiditate.</p>
+                    <span><span class="line-through mr-2">Rp. 999.999.999.000</span><span
+                            class="text-red-500">Free</span></span>
+                    <button class="bg-sky-400 py-2 rounded-lg hover:bg-sky-600 ">Beli</button>
+                </article>
+            </div>
+        </section>
+        <section class="flex bg-gray-200 mt-8 flex-col justify-center items-center py-12 gap-2">
+            <h2 class="text-2xl font-bold">Tentang Kami</h2>
+            <p class="max-w-2xl text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus animi
+                praesentium
+                amet perferendis
+                magnam odit deserunt minus ad, nam illum laboriosam ullam iste debitis modi officia? Blanditiis nemo
+                ipsum officia.</p>
+        </section>
+    </main>
+
+    <footer class="flex justify-center items-center flex-col min-h-32 bg-slate-700 text-white">
+        <p class="text-lg font-bold">TokoKita</p>
+        <p>Nomor WhatsApp: +62 857 1234 5678</p>
+        <p>Copyright (c) 2026 TokoKita</p>
+    </footer>
 </body>
+
 </html>

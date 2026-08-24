@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm sticky top-0 z-50 flex flex-row p-4 ">
+        <div class="flex items-center">
+            <a href="/" class="text-xl font-bold">TokoKita</a>
+        </div>
+        <nav class="ml-auto">
+            <ul class="flex flex-row gap-4 list-none">
+                <li>
+                    <a href="index.html#home">Home</a>
+                </li>
+                <li>
+                    <a href="index.html#produk">Produk</a>
+                </li>
+                <li>
+                    <a class="bg-sky-400 text-white px-4 py-2 rounded-lg" href="login.html">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex items-center justify-center my-auto">
+        <div class="flex flex-col bg-white m-auto p-12 gap-4 max-w-md">
+            <h2 class="text-2xl font-bold text-center">Welcome back</h2>
+            <form action="" class="flex flex-col mt-6">
+                <input class="mb-4 border border-gray-200 rounded-md py-2 px-3" placeholder="Email address" type="email"
+                    name="email" id="email">
+                <input class="mb-4 border border-gray-200 rounded-md py-2 px-3" placeholder="Password" type="password"
+                    name="password">
+                <div class="flex flex-row gap-12  justify-between">
+                    <div class="flex flex-row gap-2 items-center">
+                        <input type="checkbox" name="remember" id="remember"
+                            class="cursor-pointer h-4 w-4 rounded border-gray-300">
+                        <label for="remember" class="cursor-pointer text-sm">Remember for 30 days</label>
+                    </div>
+                    <div>
+                        <a class="text-blue-500 text-sm" href="#">Forgot Password</a>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="bg-sky-400 py-2 mt-8 rounded-sm cursor-pointer  hover:bg-sky-600  transition-colors duration-100">Sign
+                    In</button>
+            </form>
+            <p class="text-sm">Don't have an account? <a class="text-blue-500" href="register.html">Sign up.</a></p>
+        </div>
+    </main>
+
+    <footer class="flex justify-center items-center flex-col min-h-32 bg-slate-700 text-white">
+        <p class="text-lg font-bold">TokoKita</p>
+        <p>Nomor WhatsApp: +62 857 1234 5678</p>
+        <p>Copyright (c) 2026 TokoKita</p>
+    </footer>
+</body>
+
+</html>
