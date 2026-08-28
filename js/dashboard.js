@@ -1,7 +1,4 @@
-const userRaw = localStorage.getItem("loginUser");
-const user = JSON.parse(userRaw || "{}");
-
-if (user === null || !users.some((i) => i.id === user.id)) {
+if (!isLoggedIn()) {
     alert("Kamu belum login");
     window.location.href = "/login.html";
 }

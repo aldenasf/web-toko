@@ -1,3 +1,5 @@
+if (isLoggedIn()) window.location.href = "/";
+
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register");
 
@@ -42,28 +44,3 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 });
-
-// Fungsi untuk mengecek apakah user sudah ter login
-function isLoggedIn() {
-    const userRaw = localStorage.getItem("loginUser");
-    const user = JSON.parse(userRaw);
-
-    // Mengecek apakah `user` pada localStorage tidak kosong dan terdaftar di database
-    if (user !== undefined && users.includes(user)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function formError(message) {
-    const element = document.getElementById("error");
-
-    element.innerHTML = message;
-    element.classList.remove(["hidden"]);
-}
-
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
