@@ -25,10 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("loginUser", JSON.stringify(user));
 
-        if (user.role === "admin") {
-            window.location.href = "/dashboard.html";
-        } else {
-            window.location.href = "/";
-        }
+        window.location.href = "/";
     });
 });
