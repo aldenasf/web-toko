@@ -1,7 +1,7 @@
 const userRaw = localStorage.getItem("loginUser");
 const user = JSON.parse(userRaw || "{}");
 
-if (user === null && !users.includes(user)) {
+if (user === null || !users.includes(user)) {
     alert("Kamu belum login");
     window.location.href = "/login.html";
 }
@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     username.innerHTML = user.name;
     role.innerHTML = user.role;
-});
 
-const logoutBtn = document.getElementById("logout");
+    const logoutBtn = document.getElementById("logout");
 
-logoutBtn.addEventListener("click", () => {
-    localStorage.setItem("loginUser", null);
-    window.location.href = "/login.html";
+    logoutBtn.addEventListener("click", () => {
+        localStorage.setItem("loginUser", null);
+        window.location.href = "/login.html";
+    });
 });
