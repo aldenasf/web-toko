@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesanan - Toko Online Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="js/database.js"></script>
+    <script src="js/dashboard.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- SIDEBAR -->
+    <nav class="hidden md:block fixed left-0 top-0 w-[235px] h-screen bg-gray-900 text-white p-6 overflow-y-auto">
+        <h2 class="text-xl font-bold">Toko Online</h2>
+        <p class="text-gray-400 text-sm mt-1">Admin Panel</p>
+
+        <ul class="border-t border-gray-700 pt-4 mt-5">
+            <p class="text-gray-500 text-xs uppercase mb-3">Menu</p>
+
+            <li class="mb-2">
+                <a href="dashboard.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    🏠 Dashboard
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="produk.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    📦 Produk
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="pesanan.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    🛒 Pesanan
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="pelanggan.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    👥 Pelanggan
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    📊 Laporan
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    ⚙️ Pengaturan
+                </a>
+            </li>
+            <li class="mt-5 border-t border-gray-700 pt-3">
+                <button id="logout"
+                    class="w-full text-start text-red-400 px-4 py-3 rounded-lg hover:bg-red-500 hover:text-white transition">
+                    🚪 Logout
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 md:left-[235px] right-0 h-[65px] bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 z-10">
+        <div>
+            <h3 class="font-bold text-gray-800 text-sm sm:text-base">Pesanan</h3>
+            <p class="text-xs text-gray-500 hidden sm:block">Kelola pesanan pelanggan</p>
+        </div>
+
+        <div class="flex items-center gap-4 sm:gap-5">
+            <button class="relative text-gray-500 hover:text-gray-700 transition">
+                <span class="text-xl">🔔</span>
+                <span
+                    class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">3</span>
+            </button>
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p id="username" class="font-semibold text-sm text-gray-800">Admin</p>
+                    <p id="role" class="text-xs text-gray-500">Administrator</p>
+                </div>
+                <img src="https://api.dicebear.com/7.x/initials/svg?seed=Admin&backgroundColor=4f46e5"
+                    alt="Foto profil admin" class="w-10 h-10 rounded-full object-cover border border-gray-200">
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="ml-0 md:ml-[235px] pt-[90px] px-4 sm:px-6 pb-10">
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800">Data Pesanan</h3>
+            <p class="text-sm text-gray-500 mb-4">Daftar pesanan yang masuk</p>
+
+            <!-- SEARCH BAR -->
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="searchPesanan" oninput="cariPesanan()"
+                    placeholder="Cari ID pesanan atau nama pelanggan..."
+                    class="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500">
+                <button onclick="cariPesanan()"
+                    class="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                    🔍 Cari
+                </button>
+            </div>
+            <p id="pesananNotFound" class="hidden text-sm text-gray-400 text-center py-4">Pesanan tidak ditemukan.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead>
+                        <tr class="text-gray-500 border-b border-gray-200">
+                            <th class="py-2 pr-4">No</th>
+                            <th class="py-2 pr-4">ID Pesanan</th>
+                            <th class="py-2 pr-4">Pelanggan</th>
+                            <th class="py-2 pr-4">Total</th>
+                            <th class="py-2 pr-4">Status</th>
+                            <th class="py-2 pr-4">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelPesanan" class="text-gray-700">
+                        <tr class="border-b border-gray-100" data-cari="#ord001 andi">
+                            <td class="py-3 pr-4">1</td>
+                            <td class="py-3 pr-4 font-semibold">#ORD001</td>
+                            <td class="py-3 pr-4">Andi</td>
+                            <td class="py-3 pr-4">Rp450.000</td>
+                            <td class="py-3 pr-4"><span
+                                    class="bg-green-100 text-green-600 text-xs font-semibold px-2 py-1 rounded-full">Selesai</span>
+                            </td>
+                            <td class="py-3 pr-4"><button onclick="lihatDetailPesanan(this)"
+                                    class="text-blue-600 hover:underline">Detail</button></td>
+                        </tr>
+                        <tr class="border-b border-gray-100" data-cari="#ord002 budi">
+                            <td class="py-3 pr-4">2</td>
+                            <td class="py-3 pr-4 font-semibold">#ORD002</td>
+                            <td class="py-3 pr-4">Budi</td>
+                            <td class="py-3 pr-4">Rp275.000</td>
+                            <td class="py-3 pr-4"><span
+                                    class="bg-yellow-100 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full">Diproses</span>
+                            </td>
+                            <td class="py-3 pr-4"><button onclick="lihatDetailPesanan(this)"
+                                    class="text-blue-600 hover:underline">Detail</button></td>
+                        </tr>
+                        <tr class="border-b border-gray-100" data-cari="#ord003 citra">
+                            <td class="py-3 pr-4">3</td>
+                            <td class="py-3 pr-4 font-semibold">#ORD003</td>
+                            <td class="py-3 pr-4">Citra</td>
+                            <td class="py-3 pr-4">Rp150.000</td>
+                            <td class="py-3 pr-4"><span
+                                    class="bg-orange-100 text-orange-600 text-xs font-semibold px-2 py-1 rounded-full">Pending</span>
+                            </td>
+                            <td class="py-3 pr-4"><button onclick="lihatDetailPesanan(this)"
+                                    class="text-blue-600 hover:underline">Detail</button></td>
+                        </tr>
+                        <tr class="border-b border-gray-100" data-cari="#ord004 dinda">
+                            <td class="py-3 pr-4">4</td>
+                            <td class="py-3 pr-4 font-semibold">#ORD004</td>
+                            <td class="py-3 pr-4">Dinda</td>
+                            <td class="py-3 pr-4">Rp725.000</td>
+                            <td class="py-3 pr-4"><span
+                                    class="bg-green-100 text-green-600 text-xs font-semibold px-2 py-1 rounded-full">Selesai</span>
+                            </td>
+                            <td class="py-3 pr-4"><button onclick="lihatDetailPesanan(this)"
+                                    class="text-blue-600 hover:underline">Detail</button></td>
+                        </tr>
+                        <tr data-cari="#ord005 eko">
+                            <td class="py-3 pr-4">5</td>
+                            <td class="py-3 pr-4 font-semibold">#ORD005</td>
+                            <td class="py-3 pr-4">Eko</td>
+                            <td class="py-3 pr-4">Rp320.000</td>
+                            <td class="py-3 pr-4"><span
+                                    class="bg-yellow-100 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full">Diproses</span>
+                            </td>
+                            <td class="py-3 pr-4"><button onclick="lihatDetailPesanan(this)"
+                                    class="text-blue-600 hover:underline">Detail</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-gray-400 mt-8">© 2026 Toko Online. Semua hak dilindungi.</p>
+    </main>
+
+    <!-- MODAL DETAIL PESANAN -->
+    <div id="modalDetail" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-6 relative">
+            <button onclick="tutupDetail()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg leading-none">✕</button>
+
+            <h3 class="font-bold text-lg text-gray-800 mb-4">Detail Pesanan</h3>
+
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between border-b border-gray-100 pb-2">
+                    <span class="text-gray-500">ID Pesanan</span>
+                    <span id="detailId" class="font-semibold text-gray-800"></span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-2">
+                    <span class="text-gray-500">Pelanggan</span>
+                    <span id="detailPelanggan" class="font-semibold text-gray-800"></span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-2">
+                    <span class="text-gray-500">Total</span>
+                    <span id="detailTotal" class="font-semibold text-gray-800"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Status</span>
+                    <span id="detailStatus"></span>
+                </div>
+            </div>
+
+            <button onclick="tutupDetail()"
+                class="w-full mt-6 bg-blue-600 text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ===== FUNGSI CARI PESANAN =====
+        // Menyaring baris berdasarkan ID pesanan ATAU nama pelanggan
+        function cariPesanan() {
+            const kataKunci = document.getElementById('searchPesanan').value.trim().toLowerCase();
+            const baris = document.querySelectorAll('#tabelPesanan tr');
+            let adaHasil = false;
+
+            baris.forEach(tr => {
+                const target = tr.dataset.cari;
+                if (target.includes(kataKunci)) {
+                    tr.classList.remove('hidden');
+                    adaHasil = true;
+                } else {
+                    tr.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('pesananNotFound').classList.toggle('hidden', adaHasil);
+        }
+
+        // ===== FUNGSI DETAIL PESANAN =====
+        function lihatDetailPesanan(tombol) {
+            const baris = tombol.closest('tr');
+            const sel = baris.querySelectorAll('td');
+
+            document.getElementById('detailId').textContent = sel[1].textContent.trim();
+            document.getElementById('detailPelanggan').textContent = sel[2].textContent.trim();
+            document.getElementById('detailTotal').textContent = sel[3].textContent.trim();
+            document.getElementById('detailStatus').innerHTML = sel[4].innerHTML;
+
+            document.getElementById('modalDetail').classList.remove('hidden');
+        }
+
+        function tutupDetail() {
+            document.getElementById('modalDetail').classList.add('hidden');
+        }
+
+        document.getElementById('modalDetail').addEventListener('click', function (e) {
+            if (e.target === this) tutupDetail();
+        });
+    </script>
+
+</body>
+
+</html>
