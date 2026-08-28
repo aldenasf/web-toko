@@ -1,5 +1,5 @@
 const userRaw = localStorage.getItem("loginUser");
-const user = JSON.parse(userRaw);
+const user = JSON.parse(userRaw || "{}");
 
 if (user === null && !users.includes(user)) {
     alert("Kamu belum login");
@@ -8,7 +8,7 @@ if (user === null && !users.includes(user)) {
 
 if (user.role !== "admin") {
     alert("Kamu tidak mempunyai akses untuk membuka halaman ini");
-    window.location.href = "/login.html";
+    window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     username.innerHTML = user.name;
     role.innerHTML = user.role;
+});
 
-    const logoutBtn = document.getElementById("logout");
+const logoutBtn = document.getElementById("logout");
 
-    logoutBtn.addEventListener("click", () => {
-        localStorage.setItem("loginUser", null);
-        window.location.href = "/login.html";
-    });
+logoutBtn.addEventListener("click", () => {
+    localStorage.setItem("loginUser", null);
+    window.location.href = "/login.html";
 });
