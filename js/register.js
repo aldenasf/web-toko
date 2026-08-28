@@ -1,4 +1,4 @@
-if (isLoggedIn()) window.location.href = "/";
+if (isLoggedIn()) window.location.href = "index.html";
 
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register");

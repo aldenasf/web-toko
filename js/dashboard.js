@@ -1,11 +1,11 @@
 if (!isLoggedIn()) {
     alert("Kamu belum login");
-    window.location.href = "/login.html";
+    window.location.href = "login.html";
 }
 
 if (user.role !== "admin") {
     alert("Kamu tidak mempunyai akses untuk membuka halaman ini");
-    window.location.href = "/";
+    window.location.href = "index.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     logoutBtn.addEventListener("click", () => {
         localStorage.setItem("loginUser", null);
-        window.location.href = "/login.html";
+        window.location.href = "login.html";
     });
 });

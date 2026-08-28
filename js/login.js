@@ -1,4 +1,4 @@
-if (isLoggedIn()) window.location.href = "/";
+if (isLoggedIn()) window.location.href = "index.html";
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("login");
@@ -25,6 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("loginUser", JSON.stringify(user));
 
-        window.location.href = "/";
+        window.location.href = "index.html";
     });
 });

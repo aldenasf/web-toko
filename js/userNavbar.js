@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const logoutBtn = document.getElementById("logout");
         logoutBtn.addEventListener("click", () => {
             localStorage.setItem("loginUser", null);
-            window.location.href = "/";
+            window.location.href = "index.html";
         });
     }
 });
