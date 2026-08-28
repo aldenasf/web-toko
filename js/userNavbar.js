@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div
                 id="userContextMenu"
                 class="flex flex-col overflow-clip absolute hidden top-14 bg-white w-full justify-center rounded-xl ">
-                ${user.role === "admin" ? `<a class="flex py-3 px-2 w-full bg-white hover:bg-gray-200 transition-colors duration-200 text-sm" href="/dashboard.html">Dashboard</a>` : ""}
+                ${user.role === "admin" ? `<a class="flex py-3 px-2 w-full bg-white hover:bg-gray-200 transition-colors duration-200 text-sm" href="dashboard.html">Dashboard</a>` : ""}
                 <button id="logout" class="flex py-3 px-2 w-full bg-red-200 hover:bg-red-300 transition-colors duration-200 text-sm">Logout</button>
             </div>
         </li>`;
