@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produk - Toko Online Admin</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- SIDEBAR -->
+    <nav class="hidden md:block fixed left-0 top-0 w-[235px] h-screen bg-gray-900 text-white p-6">
+
+        <h2 class="text-xl font-bold">
+            Toko Online
+        </h2>
+
+        <p class="text-gray-400 text-sm mt-1">
+            Admin Panel
+        </p>
+
+        <ul class="border-t border-gray-700 pt-4 mt-5">
+
+            <p class="text-gray-500 text-xs uppercase mb-3">
+                Menu
+            </p>
+
+            <li class="mb-2">
+                <a href="dashboard.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li class="mb-2">
+                <a href="produk.html" class="block bg-blue-600 text-white px-4 py-3 rounded-lg">
+                    📦 Produk
+                </a>
+            </li>
+
+            <li class="mb-2">
+                <a href="pesanan.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    🛒 Pesanan
+                </a>
+            </li>
+
+            <li class="mb-2">
+                <a href="pelanggan.html"
+                    class="block text-gray-300 px-4 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    👥 Pelanggan
+                </a>
+            </li>
+
+            <li class="mt-5 border-t border-gray-700 pt-3">
+                <button id="logout"
+                    class="w-full text-left text-red-400 px-4 py-3 rounded-lg hover:bg-red-500 hover:text-white transition">
+                    🚪 Logout
+                </button>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 md:left-[235px] right-0 h-[65px] bg-white border-b border-gray-200 flex items-center justify-between px-6 z-10">
+
+        <h3 class="font-bold text-gray-800">
+            Admin Panel
+        </h3>
+
+        <div class="flex items-center gap-3">
+
+            <p class="font-semibold text-sm">
+                Admin
+            </p>
+
+            <img src="https://api.dicebear.com/7.x/initials/svg?seed=Admin" class="w-10 h-10 rounded-full border">
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="ml-0 md:ml-[235px] pt-[90px] px-4 sm:px-6 pb-10">
+
+        <h1 class="text-3xl font-bold text-gray-800">
+            Produk
+        </h1>
+
+        <p class="text-gray-500 mt-1">
+            Tambahkan produk baru ke toko
+        </p>
+
+
+        <!-- FORM TAMBAH PRODUK -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 p-6">
+
+            <h2 class="text-xl font-bold text-gray-800 mb-5">
+                Tambah Produk
+            </h2>
+
+            <form id="formProduk">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                    <!-- NAMA -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Nama Produk
+                        </label>
+
+                        <input type="text" id="nama" placeholder="Contoh: Mouse Wireless"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+
+
+                    <!-- HARGA -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Harga
+                        </label>
+
+                        <input type="number" id="harga" placeholder="150000"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+
+
+                    <!-- STOK -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Stok
+                        </label>
+
+                        <input type="number" id="stok" placeholder="20"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+
+
+                    <!-- KATEGORI -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Kategori
+                        </label>
+
+                        <select id="kategori"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+
+                            <option value="">Pilih Kategori</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Keyboard">Keyboard</option>
+                            <option value="Mouse">Mouse</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+                <button type="submit"
+                    class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+
+                    + Tambah Produk
+
+                </button>
+
+                <p id="pesan" class="mt-4 text-sm"></p>
+
+            </form>
+
+        </div>
+
+
+        <!-- DAFTAR PRODUK -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 p-6">
+
+            <h2 class="text-xl font-bold text-gray-800">
+                Daftar Produk
+            </h2>
+
+            <p class="text-sm text-gray-500">
+                Produk yang tersimpan di localStorage
+            </p>
+
+
+            <div class="overflow-x-auto mt-5">
+
+                <table class="w-full text-sm text-left">
+
+                    <thead>
+
+                        <tr class="border-b text-gray-500">
+
+                            <th class="py-3">No</th>
+                            <th>Nama Produk</th>
+                            <th>Harga</th>
+                            <th>Stok</th>
+                            <th>Status</th>
+                            <th>Kategori</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="daftarProduk">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/produk.js"></script>
+
+</body>
+
+</html>
